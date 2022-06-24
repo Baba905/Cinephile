@@ -23,12 +23,10 @@
               <a href="/categories/18"><button type="button" class="btn btn-outline-danger">Scyfy</button></a>
             </div>
             <!-- ----------------------------------------------------------------- -->
-          <form class="form-inline m-2" method="post">
+          <form  method="post">
             {% csrf_token %}
-            {{ form }}
-            <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">
-              Search
-            </button>
+            {{ form.as_p }}
+            <button type="submit">Search</button>
           </form>
         </nav>
 </header>
