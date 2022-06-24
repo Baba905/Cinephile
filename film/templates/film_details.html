@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+    <img src="https://image.tmdb.org/t/p/w500/{{details.poster_path}}" class="rounded mx-auto d-block" alt="movie image">
+    </div>
+    <h1 class="text-danger font-weight-bold text-center m-5">{{ details.original_title }}</h1>
+    <h5 class="text-danger font-weight-bold text-center m-5">Category</h5>
+    {%  for genre in details.genres %}
+        <a class="btn btn-primary" href="/categories/{{genre.id}}" role="button">{{genre.name}}</a>
+    {% endfor %}
+    <h3 class="text-danger font-weight-bold text-center m-5">Synopsis:</h3>
+    <p style="color: white;">{{ details.overview }}</p>
+{% endblock %}
