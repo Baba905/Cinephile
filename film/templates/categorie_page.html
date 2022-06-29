@@ -1,28 +1,51 @@
-{% extends "base.html" %}
-
-{% block page_content %}
-    <div class="row m-5">
-      
-        {% for movie in categorie_data.results %}
-        <div class="card col-2 m-5" >
-          <img class="card-img-top" src="https://image.tmdb.org/t/p/w500/{{movie.poster_path}}" alt="movie image" />
-          <div class="card-body">
-            <h5 class="card-title">{{ movie.original_title }}</h5>
-            <p class="card-text" style="text-overflow: ellipsis;">
-              {{ movie.overview|truncatechars:150 }}
-            </p>
-            <a href="/details-film/{{ movie.id}}" class="btn btn-outline-danger">Voir+</a>
-          </div>
-        </div>
-        {% endfor %}
-        <!-- <nav aria-label="Page navigation example">
-          <ul class="pagination">
-            
-            <li class="page-item"><a class="page-link" href="/accueil/1">1</a></li>
-            <li class="page-item"><a class="page-link" href="/accueil/2">2</a></li>
-            <li class="page-item"><a class="page-link" href="/accueil/3">3</a></li>
-          
-          </ul>
-        </nav> -->
+{% extends "base.html" %} {% block page_content %}
+<div class="row m-2" style="padding-top: 125px;">
+  {% for movie in categorie_data.results %}
+  <div class="card col-2 bg-dark text-danger">
+    <img
+      class="card-img-top"
+      src="https://image.tmdb.org/t/p/w500/{{movie.poster_path}}"
+      alt="movie image"
+    />
+    <div class="card-body container-fluid">
+      <h6 class="card-title">{{ movie.original_title }}</h6>
+      <p
+        class="card-text p-0 m-2"
+        style="color: white; text-overflow: ellipsis">
+        {{ movie.overview|truncatechars:50 }}
+      </p>
+      <a
+        href="/details-film/{{ movie.id }}"
+        class="btn btn-outline-danger"
+        style="margin-left: 100px"
+        >Voir+</a
+      >
     </div>
+  </div>
+  {% endfor %}
+
+  <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+      <li class="page-item">
+        <a class="page-link" href="/categories/27" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+        </a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="/categories/27">1</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="/categories/878">2</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="/categories/18">3</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="/categories/18" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div>
 {% endblock %}
