@@ -1,7 +1,7 @@
 {% extends "base.html" %} {% block page_content %}
 <div class="row m-2" style="padding-top: 125px;">
   {% for movie in default.results %}
-  <div class="card col-12 col-sm-6 col-lg-2 bg-dark text-danger">
+  <div class="card col-12 col-sm-6 col-lg-2 bg-dark text-danger border border-dark">
     <img
       class="card-img-top"
       src="https://image.tmdb.org/t/p/w500/{{movie.poster_path}}"

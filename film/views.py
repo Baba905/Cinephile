@@ -7,19 +7,22 @@ import requests
 
 
 def search(request):
+    form = Search()
     if request.method == 'POST':
-        form = Search(request.POST)
-        if form.is_valid():
+        formPost = Search(request.POST)
+        if formPost.is_valid():
             print("formulaire marche")
-            query = form.cleaned_data['search']
+            query = formPost.cleaned_data['search']
             print(query)
             data = requests.get(
                 f"https://api.themoviedb.org/3/search/movie?api_key=d8bcd4f8c9cf9fe1e3864fc180fb62af&language=en-US&query={query}&page=1&include_adult=false", verify=False)
-            return render(request, 'search.html', {'data': data.json()})
+            return render(request, 'search.html', {
+                'data': data.json(),
+                'form': form
+            })
         else:
             return HttpResponse("Formulaire non valide")
     else:
-        form = Search()
         return render(request, 'base.html', {'form': form})
 
 # def categories(request):
